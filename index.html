@@ -1,195 +1,245 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biografi Mira Fitri Aulia</title>
+
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #f0f9ff, #e0e7ff);
-      color: #1e293b;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
     }
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
-    }
-    .card {
-      background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
       padding: 30px;
     }
-    /* Header Tengah */
-    .header {
+
+    .card {
+      width: 100%;
+      max-width: 1000px;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Header */
+    .banner {
+      height: 180px;
+      background: linear-gradient(120deg, #4facfe, #00f2fe);
+    }
+
+    .head {
       text-align: center;
-      margin-bottom: 30px;
+      padding: 0 20px 20px;
+      transform: translateY(-70px);
     }
+
     .avatar {
-      width: 140px;
-      height: 140px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
-      border: 6px solid #fff;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border: 6px solid white;
       object-fit: cover;
+      background: #ddd;
     }
+
     .name {
-      font-size: 28px;
-      font-weight: 800;
-      margin-top: 15px;
-      color: #0f172a;
-    }
-    .badge {
-      background: #eff6ff;
-      color: #1d4ed8;
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 600;
-      margin: 4px;
-      display: inline-block;
-    }
-    /* Section */
-    .section {
-      margin-bottom: 30px;
-    }
-    .section h2 {
-      font-size: 20px;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      font-size: 30px;
+      font-weight: 700;
+      margin-top: 10px;
       color: #1e293b;
     }
-    .section h2 img {
-      width: 28px;
-      height: 28px;
+
+    .meta {
+      margin-top: 10px;
     }
-    .section p, .section li, .section td {
+
+    .badge {
+      display: inline-block;
+      margin: 4px;
+      padding: 6px 14px;
+      font-size: 13px;
+      border-radius: 20px;
+      color: white;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 0 24px 30px;
+    }
+
+    .section {
+      background: white;
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+    }
+
+    .section h2 {
+      font-size: 16px;
+      margin-bottom: 10px;
       color: #334155;
-      line-height: 1.6;
-      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    /* Table */
-    .table {
+
+    .section h2 img {
+      width: 20px;
+    }
+
+    .section p, li, td {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    table {
       width: 100%;
       border-collapse: collapse;
     }
-    .table td {
+
+    td {
       padding: 8px;
       border-bottom: 1px solid #e5e7eb;
     }
+
     .label {
       font-weight: 600;
-      color: #475569;
-      width: 35%;
+      width: 40%;
     }
-    /* List hobi */
-    ul.hobi {
-      list-style: none;
-      padding-left: 0;
+
+    ul {
+      padding-left: 18px;
     }
-    ul.hobi li {
-      margin: 6px 0;
-      padding-left: 28px;
-      position: relative;
+
+    .tujuan {
+      grid-column: 1 / -1;
     }
-    ul.hobi li::before {
-      content: "🎯";
-      position: absolute;
-      left: 0;
-      top: 0;
-    }
-    ul.hobi li:nth-child(2)::before { content: "♟️"; }
-    ul.hobi li:nth-child(3)::before { content: "🕵️"; }
+
     /* Links */
     .links {
       text-align: center;
-      margin-top: 20px;
+      padding-bottom: 25px;
     }
+
     .links a {
       display: inline-block;
-      margin: 8px 10px;
-      text-decoration: none;
-      color: white;
+      margin: 6px;
       padding: 10px 18px;
-      border-radius: 8px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 14px;
       font-weight: 600;
+      color: white;
+      transition: 0.3s;
     }
-    .links a.instagram { background: #E1306C; }
-    .links a.drive { background: #4CAF50; }
+
+    .instagram {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+    }
+
+    .drive {
+      background: linear-gradient(135deg, #34a853, #0f9d58);
+    }
+
+    .links a:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 14px;
+      font-size: 13px;
+      color: #64748b;
+      background: #f1f5f9;
+    }
   </style>
 </head>
+
 <body>
-  <div class="container">
-    <div class="card">
-      <!-- Header Tengah -->
-      <div class="header">
-        <img src="mira.jpg" alt="Foto Mira" class="avatar">
-        <div class="name">Mira Fitri Aulia</div>
-        <div>
-          <span class="badge">Kelas XII A</span>
-          <span class="badge">SMA Gunung Madu</span>
-        </div>
-      </div>
 
-      <!-- Biografi -->
-      <section class="section">
-        <h2><img src="https://img.icons8.com/color/48/000000/info--v1.png"/> Biografi</h2>
-        <p>Nama saya Mira Fitri Aulia, biasa dipanggil Mira. Saya lahir di Gunung Agung, 15 Oktober 2007, dan saat ini berusia 17 tahun. Saya sedang menempuh pendidikan di SMA Gunung Madu kelas XII.</p>
-        <p>Saya cukup aktif di ekstrakurikuler dan menyukai pelajaran Biologi, Kimia, Matematika, dan lainnya.</p>
-        <p>Keluarga saya selalu mendukung sehingga saya semangat belajar dan mencoba hal-hal baru. Cita-cita saya adalah menjadi orang sukses dan membanggakan orang tua.</p>
-      </section>
+<div class="card">
+  <div class="banner"></div>
 
-      <!-- Data Diri -->
-      <section class="section">
-        <h2><img src="https://img.icons8.com/color/48/000000/id-card.png"/> Data Diri</h2>
-        <table class="table">
-          <tr><td class="label">Nama Lengkap</td><td>Mira Fitri Aulia</td></tr>
-          <tr><td class="label">Nama Panggilan</td><td>Mira</td></tr>
-          <tr><td class="label">Tempat/Tgl Lahir</td><td>Gunung Agung, 15 Oktober 2007</td></tr>
-          <tr><td class="label">Jenis Kelamin</td><td>Perempuan</td></tr>
-          <tr><td class="label">Agama</td><td>Islam</td></tr>
-          <tr><td class="label">Mata Pelajaran Pilihan</td><td>Biologi, Kimia, Informatika, English TL</td></tr>
-          <tr><td class="label">Sekolah</td><td>SMA Gunung Madu</td></tr>
-        </table>
-      </section>
-
-      <!-- Kontak -->
-      <section class="section">
-        <h2><img src="https://img.icons8.com/color/48/000000/phone.png"/> Kontak</h2>
-        <table class="table">
-          <tr><td class="label">Email</td><td>mirafitriaulia89@gmail.com</td></tr>
-          <tr><td class="label">Telepon</td><td>085768612654</td></tr>
-          <tr><td class="label">Alamat</td><td>Gunung Agung, Lampung Tengah, Lampung</td></tr>
-        </table>
-      </section>
-
-      <!-- Hobi -->
-      <section class="section">
-        <h2><img src="https://img.icons8.com/color/48/000000/hobby.png"/> Minat & Hobi</h2>
-        <ul class="hobi">
-          <li>Biologi, Kimia, dan Informatika</li>
-          <li>Bermain Catur</li>
-          <li>Bermain game misteri</li>
-        </ul>
-      </section>
-
-      <!-- Tujuan -->
-      <section class="section">
-        <h2><img src="https://img.icons8.com/color/48/000000/goal.png"/> Tujuan & Rencana</h2>
-        <p>Saya ingin masuk universitas impian saya. Untuk itu saya akan giat belajar dan berusaha mewujudkan impian saya.</p>
-        <p>Saya percaya dengan kerja keras, disiplin, dan doa, saya bisa mewujudkan masa depan yang saya impikan.</p>
-      </section>
-
-      <!-- Link Sosial -->
-      <div class="links">
-        <a href="https://instagram.com/mirafitriaulia" target="_blank" class="instagram">Instagram</a>
-        <a href="https://drive.google.com/drive/folders/1OySkn9TfJxibL0FoNRvWU_8ezAlKZpiJ" target="_blank" class="drive">Google Drive</a>
-      </div>
+  <div class="head">
+    <img src="mira.jpg" alt="Foto Mira Fitri Aulia" class="avatar">
+    <div class="name">Mira Fitri Aulia</div>
+    <div class="meta">
+      <span class="badge">Kelas XII A</span>
+      <span class="badge">SMA Gunung Madu</span>
     </div>
   </div>
+
+  <div class="grid">
+
+    <section class="section">
+      <h2>📖 Biografi</h2>
+      <p>Nama saya Mira Fitri Aulia, biasa dipanggil Mira. Saya lahir di Gunung Agung, 15 Oktober 2007. Saat ini saya menempuh pendidikan di SMA Gunung Madu kelas XII.</p>
+      <p>Saya menyukai pelajaran Biologi, Kimia, dan Matematika serta aktif mengikuti kegiatan sekolah.</p>
+    </section>
+
+    <section class="section">
+      <h2>👤 Data Diri</h2>
+      <table>
+        <tr><td class="label">Nama</td><td>Mira Fitri Aulia</td></tr>
+        <tr><td class="label">Jenis Kelamin</td><td>Perempuan</td></tr>
+        <tr><td class="label">Agama</td><td>Islam</td></tr>
+        <tr><td class="label">Sekolah</td><td>SMA Gunung Madu</td></tr>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>🎯 Minat & Hobi</h2>
+      <ul>
+        <li>Biologi dan Kimia</li>
+        <li>Bermain catur</li>
+        <li>Game misteri</li>
+      </ul>
+    </section>
+
+    <section class="section tujuan">
+      <h2>🚀 Tujuan</h2>
+      <p>Saya ingin melanjutkan pendidikan ke universitas impian dan menjadi pribadi yang sukses serta membanggakan orang tua.</p>
+    </section>
+
+  </div>
+
+  <div class="links">
+    <a href="https://instagram.com/mirafitriaulia" target="_blank" class="instagram">Instagram</a>
+    <a href="https://drive.google.com" target="_blank" class="drive">Google Drive</a>
+  </div>
+
+  <div class="footer">
+    © 2025 | Biografi Mira Fitri Aulia
+  </div>
+</div>
+
 </body>
-</html>          
+</html>
